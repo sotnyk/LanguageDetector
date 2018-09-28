@@ -1,4 +1,5 @@
 ﻿using Microsoft.ML;
+using Microsoft.ML.Runtime.LightGBM;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -89,7 +90,8 @@ namespace Prediction
         {
             if (model == null)
             {
-              model = await PredictionModel.ReadAsync<ClassificationData, ClassPrediction>(modelPath);
+                new LightGbmArguments();
+                model = await PredictionModel.ReadAsync<ClassificationData, ClassPrediction>(modelPath);
             }
 
             if (predicts == null) // do we have input to predict a result?
