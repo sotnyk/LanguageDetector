@@ -15,7 +15,7 @@
     public class ClassPrediction
     {
         [ColumnName("PredictedLabel")]
-        public float Class;
+        public string Class;
 
         [ColumnName("Score")]
         public float[] Score;

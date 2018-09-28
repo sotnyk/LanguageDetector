@@ -14,7 +14,7 @@
     public class ClassificationData
     {
         [Column(ordinal: "0", name: "Label")]
-        public float LanguageClass;
+        public string LanguageClass;
 
         [Column(ordinal: "1")]
         public string Text;

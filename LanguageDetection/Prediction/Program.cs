@@ -10,8 +10,6 @@ namespace Prediction
 {
     class Program
     {
-        static readonly string[] classNames = { "German", "English", "French", "Italien", "Romanian", "Spanish" };
-
         static readonly IEnumerable<ClassificationData> predictSentimentsData = new[]
         {
             new ClassificationData
@@ -46,7 +44,7 @@ namespace Prediction
         {
             Task.Run(async () =>
             {
-                var model = await PredictAsync(modelPath, classNames, predictSentimentsData);
+                var model = await PredictAsync(modelPath, predictSentimentsData);
 
                 Console.WriteLine();
                 Console.WriteLine("Please enter another string to classify or just <Enter> to exit the program.");
@@ -63,7 +61,7 @@ namespace Prediction
                         }
                     };
                   
-                    model = await PredictAsync(modelPath, classNames, predictInputSentiments, model);
+                    model = await PredictAsync(modelPath, predictInputSentiments, model);
                 }
 
                 Console.WriteLine("Press any key to end program...");
@@ -84,7 +82,6 @@ namespace Prediction
         /// <param name="model"></param>
         internal static async Task<PredictionModel<ClassificationData, ClassPrediction>> PredictAsync(
             string modelPath,
-            string[] classNames,
             IEnumerable<ClassificationData> predicts = null,
             PredictionModel<ClassificationData, ClassPrediction> model = null)
         {
@@ -108,6 +105,9 @@ namespace Prediction
             IEnumerable<(ClassificationData sentiment, ClassPrediction prediction)> sentimentsAndPredictions =
                 predicts.Zip(predictions, (sentiment, prediction) => (sentiment, prediction));
 
+            if (!model.TryGetScoreLabelNames(out var scoreClassNames))
+                throw new Exception("Can't get score classes");
+
             foreach (var (sentiment, prediction) in sentimentsAndPredictions)
             {
                 string textDisplay = sentiment.Text;
@@ -115,13 +115,13 @@ namespace Prediction
                 if (textDisplay.Length > 80)
                     textDisplay = textDisplay.Substring(0, 75) + "...";
 
-                string predictedClass = classNames[(uint)prediction.Class];
+                string predictedClass = prediction.Class;
 
                 Console.WriteLine("Prediction: {0}-{1} | Test: '{2}', Scores:",
                     prediction.Class, predictedClass, textDisplay);
                 for(var l = 0; l < prediction.Score.Length; ++l)
                 {
-                    Console.Write($"  {l}({classNames[l]})={prediction.Score[l]}");
+                    Console.Write($"  {l}({scoreClassNames[l]})={prediction.Score[l]}");
                 }
                 Console.WriteLine();
                 Console.WriteLine();
