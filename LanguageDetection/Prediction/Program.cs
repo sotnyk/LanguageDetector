@@ -106,17 +106,23 @@ namespace Prediction
             IEnumerable<(ClassificationData sentiment, ClassPrediction prediction)> sentimentsAndPredictions =
                 predicts.Zip(predictions, (sentiment, prediction) => (sentiment, prediction));
 
-            foreach (var item in sentimentsAndPredictions)
+            foreach (var (sentiment, prediction) in sentimentsAndPredictions)
             {
-                string textDisplay = item.sentiment.Text;
+                string textDisplay = sentiment.Text;
 
                 if (textDisplay.Length > 80)
                     textDisplay = textDisplay.Substring(0, 75) + "...";
 
-                string predictedClass = classNames[(uint)item.prediction.Class];
+                string predictedClass = classNames[(uint)prediction.Class];
 
-                Console.WriteLine("Prediction: {0}-{1} | Test: '{2}'",
-                    item.prediction.Class, predictedClass, textDisplay);
+                Console.WriteLine("Prediction: {0}-{1} | Test: '{2}', Scores:",
+                    prediction.Class, predictedClass, textDisplay);
+                for(var l = 0; l < prediction.Score.Length; ++l)
+                {
+                    Console.Write($"  {l}({classNames[l]})={prediction.Score[l]}");
+                }
+                Console.WriteLine();
+                Console.WriteLine();
             }
             Console.WriteLine();
 

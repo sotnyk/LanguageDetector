@@ -16,5 +16,8 @@
     {
         [ColumnName("PredictedLabel")]
         public float Class;
+
+        [ColumnName("Score")]
+        public float[] Score;
     }
 }
