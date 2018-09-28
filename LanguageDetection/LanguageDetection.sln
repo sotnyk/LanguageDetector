@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training", "Training\Training.csproj", "{4C5235C7-51C8-4A3F-BFE0-7609021B8B47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prediction", "Prediction\Prediction.csproj", "{2FCE23C0-2A9D-479A-8FA3-6E25B829E5E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{BF51A1A9-78D3-4F26-B87C-F21DBDD82DCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C5235C7-51C8-4A3F-BFE0-7609021B8B47}.Debug|x64.ActiveCfg = Debug|x64
+		{4C5235C7-51C8-4A3F-BFE0-7609021B8B47}.Debug|x64.Build.0 = Debug|x64
+		{4C5235C7-51C8-4A3F-BFE0-7609021B8B47}.Release|x64.ActiveCfg = Release|x64
+		{4C5235C7-51C8-4A3F-BFE0-7609021B8B47}.Release|x64.Build.0 = Release|x64
+		{2FCE23C0-2A9D-479A-8FA3-6E25B829E5E9}.Debug|x64.ActiveCfg = Debug|x64
+		{2FCE23C0-2A9D-479A-8FA3-6E25B829E5E9}.Debug|x64.Build.0 = Debug|x64
+		{2FCE23C0-2A9D-479A-8FA3-6E25B829E5E9}.Release|x64.ActiveCfg = Release|x64
+		{2FCE23C0-2A9D-479A-8FA3-6E25B829E5E9}.Release|x64.Build.0 = Release|x64
+		{BF51A1A9-78D3-4F26-B87C-F21DBDD82DCC}.Debug|x64.ActiveCfg = Debug|x64
+		{BF51A1A9-78D3-4F26-B87C-F21DBDD82DCC}.Debug|x64.Build.0 = Debug|x64
+		{BF51A1A9-78D3-4F26-B87C-F21DBDD82DCC}.Release|x64.ActiveCfg = Release|x64
+		{BF51A1A9-78D3-4F26-B87C-F21DBDD82DCC}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B636FBFF-393B-467B-BF04-397FCF9AC877}
+	EndGlobalSection
+EndGlobal
