@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\LightGBM.2.2.1\build\LightGBM.props" Condition="Exists('..\packages\LightGBM.2.2.1\build\LightGBM.props')" />
   <Import Project="..\packages\Microsoft.ML.0.5.0\build\netstandard2.0\Microsoft.ML.props" Condition="Exists('..\packages\Microsoft.ML.0.5.0\build\netstandard2.0\Microsoft.ML.props')" />
   <Import Project="..\packages\Microsoft.ML.CpuMath.0.5.0\build\netstandard2.0\Microsoft.ML.CpuMath.props" Condition="Exists('..\packages\Microsoft.ML.CpuMath.0.5.0\build\netstandard2.0\Microsoft.ML.CpuMath.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -10,11 +11,12 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Training</RootNamespace>
     <AssemblyName>Training</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -38,9 +40,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ML, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ML.0.5.0\lib\netstandard2.0\Microsoft.ML.dll</HintPath>
     </Reference>
@@ -61,6 +60,9 @@
     </Reference>
     <Reference Include="Microsoft.ML.KMeansClustering, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ML.0.5.0\lib\netstandard2.0\Microsoft.ML.KMeansClustering.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.LightGBM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ML.LightGBM.0.5.0\lib\netstandard2.0\Microsoft.ML.LightGBM.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ML.Maml, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ML.0.5.0\lib\netstandard2.0\Microsoft.ML.Maml.dll</HintPath>
@@ -93,9 +95,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.9.0\lib\netstandard2.0\System.Threading.Tasks.Dataflow.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -147,6 +146,9 @@
     <Error Condition="!Exists('..\packages\Microsoft.ML.CpuMath.0.5.0\build\netstandard2.0\Microsoft.ML.CpuMath.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.CpuMath.0.5.0\build\netstandard2.0\Microsoft.ML.CpuMath.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.ML.0.5.0\build\netstandard2.0\Microsoft.ML.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.0.5.0\build\netstandard2.0\Microsoft.ML.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.ML.0.5.0\build\netstandard2.0\Microsoft.ML.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.0.5.0\build\netstandard2.0\Microsoft.ML.targets'))" />
+    <Error Condition="!Exists('..\packages\LightGBM.2.2.1\build\LightGBM.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\LightGBM.2.2.1\build\LightGBM.props'))" />
+    <Error Condition="!Exists('..\packages\LightGBM.2.2.1\build\LightGBM.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\LightGBM.2.2.1\build\LightGBM.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.ML.0.5.0\build\netstandard2.0\Microsoft.ML.targets" Condition="Exists('..\packages\Microsoft.ML.0.5.0\build\netstandard2.0\Microsoft.ML.targets')" />
+  <Import Project="..\packages\LightGBM.2.2.1\build\LightGBM.targets" Condition="Exists('..\packages\LightGBM.2.2.1\build\LightGBM.targets')" />
 </Project>

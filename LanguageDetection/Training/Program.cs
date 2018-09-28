@@ -1,6 +1,7 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Models;
+using Microsoft.ML.Runtime.LightGBM;
 using Microsoft.ML.Trainers;
 using Microsoft.ML.Transforms;
 using Models;
@@ -59,9 +60,11 @@ namespace Training
             // This is used to format and clean the data.
             pipeline.Add(new TextFeaturizer("Features", "Text"));
 
-            pipeline.Add(new StochasticDualCoordinateAscentClassifier());
+            //pipeline.Add(new StochasticDualCoordinateAscentClassifier());
             //pipeline.Add(new LogisticRegressionClassifier());
             //pipeline.Add(new NaiveBayesClassifier());
+            new LightGbmArguments(); // <- to LightGBM assembly load into memory
+            pipeline.Add(new LightGbmClassifier());
 
             pipeline.Add(new PredictedLabelColumnOriginalValueConverter() { PredictedLabelColumn = "PredictedLabel" });
 
